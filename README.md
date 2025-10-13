@@ -31,3 +31,15 @@ username: admin
 password: admin
 ```
 
+check your vm space /
+
+```
+df -h
+```
+
+
+check your vm memory
+```
+df -h
+```
+
