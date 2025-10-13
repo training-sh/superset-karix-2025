@@ -351,6 +351,18 @@ CREATE TABLE IF NOT EXISTS lineitems (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ```
-   
-window.location.href = url;
 
+In superset, go to Database connections under settings, add below details for mysql...
+
+```
+connection name: MySQL TPCH
+hostname: mysql
+post: 3306
+database name: tpch
+username: root
+password: mysql_root_pass
+```
+
+Then heads to SQL in Superset
+
+Check one table from mysql 
