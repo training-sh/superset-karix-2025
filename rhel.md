@@ -1,5 +1,7 @@
 need to consolidate.. but worked so far..
 
+change due to space limit in /var by vendor vm
+
 ```
 docker info | grep "Docker Root Dir"
 
