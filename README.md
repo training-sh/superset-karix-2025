@@ -1,5 +1,9 @@
 # REDHAT SETUP
 
+```
+sudo su -
+```
+
 Change docker default location..  
 
 
