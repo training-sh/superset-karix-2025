@@ -109,5 +109,29 @@ check your vm memory
 df -h
 ```
 
+-- on a second terminal
+
+on second ssh terminal,
+
+please get url from team chat...
+``` 
+wget --content-disposition "url-removed here?download=1"
+```
+
+```
+yum install unzip
+```
+
+```
+unzip tpch_csv.zip -d tpch_csv
+```
+ 
+``` 
+mv /root/tpch_csv/tpch_csv/*.csv    /root/tpch_csv
+```
+ensure all csvs here
+
+```
+ls   /root/tpch_csv
 ```
 
