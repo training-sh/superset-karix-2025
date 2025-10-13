@@ -139,3 +139,12 @@ ensure all csvs here
 ls   /root/tpch_csv
 ```
 
+follow data mysql setup
+
+https://github.com/training-sh/superset-karix-2025/blob/main/MysQL-Data-Setup.md
+
+Later we will dump data into clickhouse
+
+
+
+
