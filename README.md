@@ -1,6 +1,7 @@
 # REDHAT SETUP
 
-Change docker default location
+Change docker default location..  
+
 
 ```
 sudo mkdir -p /etc/docker
@@ -73,6 +74,12 @@ docker compose build --no-cache superset celery_worker
 ```
 
 we are running docker containers on shell prompt itself, fore ground. you may run in backgroun after all setup working..
+
+
+```
+chmod -R a+r /root
+```
+
 
 ```
 docker compose up --build
