@@ -71,6 +71,9 @@ need to change the path before running below cmd:
 ``` 
 docker compose build --no-cache superset celery_worker
 ```
+
+we are running docker containers on shell prompt itself, fore ground. you may run in backgroun after all setup working..
+
 ```
 docker compose up --build
 ``` 
@@ -85,15 +88,19 @@ username: admin
 password: admin
 ```
 
+run below commands in differnt ssh to your vm..
+
+
 check your vm space /
 
 ```
 df -h
 ```
 
-
 check your vm memory
 ```
 df -h
+```
+
 ```
 
