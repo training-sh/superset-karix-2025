@@ -58,10 +58,14 @@ ORDER BY region, year;
 
 NOW BREAK THIS QUERY INTO MATERILIZED VIEW (Mysql is a table, you do this on backend tools on datawarehouse,flink,spark, databricks etc)
 
+```
 use tpch;
 
 DROP TABLE IF EXISTS top_regions_ct;
 
+```
+
+```
 CREATE TABLE top_regions_ct
 ENGINE=InnoDB
 AS
@@ -78,22 +82,25 @@ WHERE o.o_orderdate >= '1990-01-01'
 GROUP BY r.r_regionkey, r.r_name
 ORDER BY total_sales_alltime DESC
 LIMIT 10;
-
-
+```
+```
 SELECT count(*) from top_regions_ct;
 SELECT *   from top_regions_ct LIMIT 5;
+```
 
-
+optional 
+```
 ALTER TABLE top_regions_ct ADD PRIMARY KEY (r_regionkey);
 -- or if column name normalized:
 ALTER TABLE top_regions_ct ADD INDEX idx_region (r_regionkey, region);
-
+```
 --
 
-
+```
 DROP TABLE IF EXISTS yearly_sales_ct;
- 
+```
 
+```
 CREATE TABLE yearly_sales_ct
 ENGINE=InnoDB
 AS
@@ -112,15 +119,24 @@ WHERE o.o_orderdate >= '1990-01-01'
   AND r.r_regionkey IN (SELECT r_regionkey FROM top_regions_ct)
 GROUP BY r.r_regionkey, r.r_name, YEAR(o.o_orderdate);
 
+```
+
+```
 SELECT count(*) from yearly_sales_ct;
-
 SELECT * from yearly_sales_ct LIMIT 5;
+```
 
+otpional 
+```
 ALTER TABLE yearly_sales_ct ADD PRIMARY KEY (r_regionkey, year);
 ALTER TABLE yearly_sales_ct ADD INDEX idx_region_year (region, year);
 ALTER TABLE yearly_sales_ct ADD INDEX idx_timestamp (__timestamp);
-
+```
 -- only if you expect many years and very large rows
+
+optional 
+
+```
 ALTER TABLE yearly_sales_ct
 PARTITION BY RANGE (year) (
   PARTITION p1990 VALUES LESS THAN (2000),
@@ -128,10 +144,13 @@ PARTITION BY RANGE (year) (
   PARTITION p2010 VALUES LESS THAN (2020),
   PARTITION pmax VALUES LESS THAN MAXVALUE
 );
+```
 
-
+```
 DROP TABLE IF EXISTS yearly_sales_yoy_ct;
+```
 
+```
 CREATE TABLE yearly_sales_yoy_ct
 ENGINE=InnoDB
 AS
@@ -148,13 +167,17 @@ SELECT
 FROM yearly_sales_ct cur
 LEFT JOIN yearly_sales_ct prev
   ON cur.r_regionkey = prev.r_regionkey AND cur.year = prev.year + 1;
+```
 
 
+```
 ALTER TABLE yearly_sales_yoy_ct ADD PRIMARY KEY (r_regionkey, year);
 ALTER TABLE yearly_sales_yoy_ct ADD INDEX idx_region_ts (region, __timestamp);
+```
 
 for superset dataset,
 
+```
 SELECT
   __timestamp AS __timestamp,   -- Superset expects a column named __timestamp or use this as the time column in dataset settings
   region,
@@ -163,11 +186,11 @@ SELECT
   yoy_growth_pct
 FROM yearly_sales_yoy_ct
 ORDER BY region, __timestamp;
-
+```
 
 
 --
-
+```
 SELECT
   region,
   total_sales_alltime        AS total_sales,
@@ -196,10 +219,11 @@ SELECT
   CASE WHEN total_sales_alltime > 0 THEN LOG(total_sales_alltime) ELSE NULL END AS total_sales_log
 FROM top_regions_ct
 ORDER BY total_sales_alltime DESC;
+```
 
 
 --
-
+```
 SELECT
   region,
   total_sales_alltime        AS total_sales,
@@ -244,12 +268,14 @@ SELECT
 
 FROM top_regions_ct
 ORDER BY total_sales_alltime DESC;
-
+```
 
 --
-
+```
 DROP TABLE IF EXISTS sales_by_country_ct;
+```
 
+```
 CREATE TABLE sales_by_country_ct
 ENGINE=InnoDB
 AS
@@ -300,7 +326,7 @@ JOIN regions r   ON n.n_regionkey = r.r_regionkey
 
 GROUP BY n.n_nationkey, n.n_name, r.r_name
 ORDER BY total_sales DESC;
-
+```
 
 
 ```
