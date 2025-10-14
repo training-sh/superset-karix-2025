@@ -58,6 +58,8 @@ ORDER BY region, year;
 
 NOW BREAK THIS QUERY INTO MATERILIZED VIEW (Mysql is a table, you do this on backend tools on datawarehouse,flink,spark, databricks etc)
 
+launch another ssh session into vm server
+
 ```
 docker exec -it superset_mysql bash
 
