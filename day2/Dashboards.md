@@ -1,13 +1,7 @@
+Run in SQL lab now..
+Then cREATE TABLE AS  must be in mysql prompt or you have enabled DML in DATAset
 ```
-
-docker exec -it superset_app superset load_examples
-
-docker exec -it superset_mysql bash
-
-# now inside container shell:
-# connect as tpch user to tpch DB
-mysql -uroot -pmysql_root_pass
-
+  
 
 -- yearly growth by region for line chart
 
