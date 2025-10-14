@@ -59,6 +59,24 @@ ORDER BY region, year;
 NOW BREAK THIS QUERY INTO MATERILIZED VIEW (Mysql is a table, you do this on backend tools on datawarehouse,flink,spark, databricks etc)
 
 ```
+docker exec -it superset_mysql bash
+
+```
+
+# OR connect as root
+```
+mysql -uroot -pmysql_root_pass
+```
+
+Once in the mysql> prompt you can run:
+
+
+```
+USE tpch;
+```
+
+
+```
 use tpch;
 
 DROP TABLE IF EXISTS top_regions_ct;
