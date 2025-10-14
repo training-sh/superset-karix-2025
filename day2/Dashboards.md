@@ -1,12 +1,13 @@
 Run in SQL lab now..
 Then cREATE TABLE AS  must be in mysql prompt or you have enabled DML in DATAset
-```
+
   
 
 -- yearly growth by region for line chart
 
 -- Region-wise yearly sales and YoY growth (%)
 
+```
 WITH top_regions AS (
   SELECT
     r.r_regionkey,
@@ -53,6 +54,7 @@ SELECT
 FROM yearly_sales
 ORDER BY region, year;
 
+```
 
 ===============
 
