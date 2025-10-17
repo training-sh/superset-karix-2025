@@ -146,5 +146,23 @@ https://github.com/training-sh/superset-karix-2025/blob/main/MysQL-Data-Setup.md
 Later we will dump data into clickhouse
 
 
+# notes for day 5..
 
+you may stop existing or remove existing containers
+
+on the root directory
+
+```
+docker compose down -v
+```
+
+
+```
+wget https://github.com/training-sh/superset-karix-2025/raw/refs/heads/main/day5.zip
+ 
+unzip day5.zip
+```
+
+
+ 
 
