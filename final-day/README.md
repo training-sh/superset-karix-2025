@@ -60,5 +60,15 @@ Load superset example
 docker   exec -it superset_app superset load_examples
 ```
 
+Go to temp-mail web for mailrelay
+
+https://temp-mail.org/en
 
 
+And copy the email id for your reports
+
+if it is mailpit, check in
+
+http://localhost:8085 
+
+in place of localhost, it must be your vm name/ip
