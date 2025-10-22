@@ -48,6 +48,14 @@ docker compose up --build
 ```
 
 
+
+Login into another terminal
+
+
+```
+cd final-day
+```
+Load superset example
 ```
 docker   exec -it superset_app superset load_examples
 ```
