@@ -35,6 +35,11 @@ cd final-day
 ```
 
 ```
+sudo chmod -R 777 /root/final-day
+```
+
+
+```
 docker compose build --no-cache superset celery_worker
 ```
 
